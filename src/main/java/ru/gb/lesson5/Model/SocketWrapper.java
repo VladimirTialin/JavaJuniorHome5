@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 @Getter
+public
 class SocketWrapper implements AutoCloseable {
 
     private final long id;
@@ -15,7 +16,7 @@ class SocketWrapper implements AutoCloseable {
     private final Scanner input;
     private final PrintWriter output;
 
-    SocketWrapper(long id, Socket socket) throws IOException {
+    public SocketWrapper(long id, Socket socket) throws IOException {
         this.id = id;
         this.socket = socket;
         this.input = new Scanner(socket.getInputStream());

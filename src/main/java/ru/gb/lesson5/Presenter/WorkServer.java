@@ -1,7 +1,6 @@
 package ru.gb.lesson5.Presenter;
 
 import ru.gb.lesson5.Model.Server;
-
 import java.io.IOException;
 
 public class WorkServer {

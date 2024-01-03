@@ -1,9 +1,6 @@
 package ru.gb.lesson5.Model;
 
-import lombok.Getter;
-import lombok.Setter;
 import ru.gb.lesson5.Model.Interface.SettingServer;
-import ru.gb.lesson5.Model.Interface.Stream;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,7 +14,7 @@ import java.util.Scanner;
 public class Server implements SettingServer {
 
   private long clientId;
-  private  Map<Long,SocketWrapper> clients=new HashMap<>();
+  private  Map<Long, SocketWrapper> clients=new HashMap<>();
   private long clientIdCounter = 1L;
   public Server() {
   }
@@ -26,12 +23,14 @@ public class Server implements SettingServer {
       System.out.println("Сервер запущен на порту " +port);
       while (true) {
         final Socket client = server.accept();
-        clientId = clientIdCounter++;
+        this.clientId = clientIdCounter++;
         SocketWrapper wrapper = new SocketWrapper(clientId, client);
         System.out.println("Подключился новый клиент[" + wrapper + "]");
         clients.put(clientId, wrapper);
         theadServer(wrapper);
       }
+    }catch (Exception e){
+      e.printStackTrace();
     }
   }
   private void theadServer(SocketWrapper wrapper) {
